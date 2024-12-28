@@ -64,8 +64,8 @@ class PersonDetectionSystem:
 
     def send_signal_to_arduino(self, signal):
         try:
-            self.ser.write(signal.encode())
-            print(f"Sent to Arduino: {signal}")
+            data = self.ser.readline().decode('utf-8', errors='ignore').strip()
+            print(f"Sent to Arduino: {data}")
         except Exception as e:
             print(f"Error sending signal: {str(e)}")
 
